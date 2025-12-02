@@ -1,3 +1,4 @@
+lib.locale()
 RegisterNetEvent('fcn_snowball:pickup')
 AddEventHandler('fcn_snowball:pickup', function()
     local playerId = source
@@ -5,7 +6,7 @@ AddEventHandler('fcn_snowball:pickup', function()
         exports.ox_inventory:AddItem(playerId, "weapon_snowball", 1)
     else
         TriggerClientEvent('ox_lib:notify', playerId, {
-            description = 'You dont have enough weight for the snowball!',
+            description = locale("no_space_notify"),
             type = 'error'
         })
     end

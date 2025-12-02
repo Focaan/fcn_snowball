@@ -1,0 +1,7 @@
+{
+  "pickup": "Pickup snowball",
+  "pickup_progress": "Picking snowball...",
+  "no_space_notify": "You don't have enough space in your inventory!",
+  "pickup_no_vehicle": "You cannot pick up snowball in a vehicle!",
+  "pickup_not_outside": "You can only pick up snowballs outside!"
+}

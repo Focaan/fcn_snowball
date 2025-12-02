@@ -1,0 +1,7 @@
+{
+  "pickup": "Vzít kouli",
+  "pickup_progress": "Bereš kouli...",
+  "no_space_notify": "Nemáš místo v inventáři!",
+  "pickup_no_vehicle": "Nemůžeš sbírat koule v autě!",
+  "pickup_not_outside": "Koule můžeš sbírat pouze venku!"
+}
