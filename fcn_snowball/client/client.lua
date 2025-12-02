@@ -12,7 +12,8 @@ local function pickupBall()
         return
     end
 
-    if not IsPedOutdoors(ped) then
+    local interior = GetInteriorFromEntity(ped)
+    if interior ~= 0 then
         lib.notify({
             title = 'Snowball',
             description = locale("pickup_not_outside"),
