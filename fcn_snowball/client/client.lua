@@ -1,5 +1,26 @@
 local function pickupBall()
-  if lib.progressBar({
+
+    local ped = PlayerPedId()
+    if IsPedInAnyVehicle(ped, false) then
+        lib.notify({
+            title = 'Snowball',
+            description = 'You cannot pick up snowballs while in a vehicle.',
+            type = 'error'
+        })
+        return
+    end
+
+    local interior = GetInteriorFromEntity(ped)
+    if interior ~= 0 then
+        lib.notify({
+            title = 'Snowball',
+            description = 'You cannot pick up snowballs while indoors.',
+            type = 'error'
+        })
+        return
+    end
+
+    if lib.progressBar({
         duration = 1400,
         label = 'Picking snowball...',
         useWhileDead = false,
@@ -13,9 +34,7 @@ local function pickupBall()
             clip = 'pickup_snowball'
         }
     }) then
-      TriggerServerEvent("fcn_snowball:pickup")
-    else
-      
+        TriggerServerEvent("fcn_snowball:pickup")
     end
 end
 
