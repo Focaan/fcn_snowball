@@ -1,20 +1,21 @@
-local function pickupBall()
+lib.locale()
 
+local function pickupBall()
     local ped = PlayerPedId()
+
     if IsPedInAnyVehicle(ped, false) then
         lib.notify({
             title = 'Snowball',
-            description = 'You cannot pick up snowballs while in a vehicle.',
+            description = locale("pickup_no_vehicle"),
             type = 'error'
         })
         return
     end
 
-    local interior = GetInteriorFromEntity(ped)
-    if interior ~= 0 then
+    if not IsPedOutdoors(ped) then
         lib.notify({
             title = 'Snowball',
-            description = 'You cannot pick up snowballs while indoors.',
+            description = locale("pickup_not_outside"),
             type = 'error'
         })
         return
@@ -22,7 +23,7 @@ local function pickupBall()
 
     if lib.progressBar({
         duration = 1400,
-        label = 'Picking snowball...',
+        label = locale("pickup_progress"),
         useWhileDead = false,
         canCancel = true,
         disable = {
@@ -38,14 +39,13 @@ local function pickupBall()
     end
 end
 
-
 lib.addRadialItem({
-  {
-    id = 'pickup',
-    label = "Pickup snowball",
-    icon = 'snowflake',
-    onSelect = function()
-      pickupBall()
-    end
-  }
+    {
+        id = 'pickup',
+        label = locale("pickup"),
+        icon = 'snowflake',
+        onSelect = function()
+            pickupBall()
+        end
+    }
 })
